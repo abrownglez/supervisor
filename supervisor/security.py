@@ -10,9 +10,7 @@ from .const import (
     FILE_HASSIO_SECURITY,
 )
 from .coresys import CoreSys, CoreSysAttributes
-from .exceptions import CodeNotaryError, CodeNotaryUntrusted, PwnedError
-from .resolution.const import UnhealthyReason
-from .utils.codenotary import vcn_validate
+from .exceptions import PwnedError
 from .utils.common import FileConfiguration
 from .utils.pwned import check_pwned_password
 from .validate import SCHEMA_SECURITY_CONFIG
@@ -62,19 +60,19 @@ class Security(FileConfiguration, CoreSysAttributes):
         self, checksum: Optional[str] = None, path: Optional[Path] = None
     ) -> Awaitable[None]:
         """Verify content from HA org."""
-        if not self.content_trust:
-            _LOGGER.warning("Disabled content-trust, skip validation")
-            return
+        _LOGGER.warning("Disabled content-trust, skip validation")
+        return
 
-        try:
-            await vcn_validate(checksum, path, org="home-assistant.io")
-        except CodeNotaryUntrusted:
-            self.sys_resolution.unhealthy = UnhealthyReason.UNTRUSTED
-            raise
-        except CodeNotaryError:
-            if self.force:
-                raise
-            return
+        # TODO(abrownglez): Enable CodeNotary checksum validation.
+        # try:
+        #     await vcn_validate(checksum, path, org="home-assistant.io")
+        # except CodeNotaryUntrusted:
+        #     self.sys_resolution.unhealthy = UnhealthyReason.UNTRUSTED
+        #     raise
+        # except CodeNotaryError:
+        #     if self.force:
+        #         raise
+        #     return
 
     async def verify_secret(self, pwned_hash: str) -> None:
         """Verify pwned state of a secret."""

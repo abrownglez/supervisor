@@ -1,6 +1,5 @@
 {
-  "image": "homeassistant/{arch}-hassio-supervisor",
-  "shadow_repository": "ghcr.io/home-assistant",
+  "image": "casai/{arch}-cerebro-supervisor",
   "build_from": {
     "aarch64": "ghcr.io/home-assistant/aarch64-base-python:3.9-alpine3.14",
     "armhf": "ghcr.io/home-assistant/armhf-base-python:3.9-alpine3.14",
@@ -9,7 +8,11 @@
     "i386": "ghcr.io/home-assistant/i386-base-python:3.9-alpine3.14"
   },
   "args": {
-    "VCN_VERSION": "0.9.4"
+    "CAS_VERSION": "1.0.2"
+  },
+  "codenotary": {
+    "signer": "notary@home-assistant.io",
+    "base_image": "notary@home-assistant.io"
   },
   "labels": {
     "io.hass.type": "supervisor",

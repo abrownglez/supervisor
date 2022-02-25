@@ -15,7 +15,7 @@ from .interface import CommandReturn, DockerInterface
 
 _LOGGER: logging.Logger = logging.getLogger(__name__)
 _VERIFY_TRUST: AwesomeVersion = AwesomeVersion("2021.5.0")
-_HASS_DOCKER_NAME: str = "homeassistant"
+_HASS_DOCKER_NAME: str = "cerebro"
 
 
 class DockerHomeAssistant(DockerInterface):
@@ -146,6 +146,10 @@ class DockerHomeAssistant(DockerInterface):
                 ENV_TIME: self.sys_timezone,
                 ENV_TOKEN: self.sys_homeassistant.supervisor_token,
                 ENV_TOKEN_HASSIO: self.sys_homeassistant.supervisor_token,
+                # TODO(abrownglez): Set this variables in a config file during Docker build.
+                "BASE_EXT_URL": "https://test-cerebro.casai.com/",
+                "CASAI_AUTH_BASE_URL": "https://test-cerebro.casai.com",
+                "CASAI_AUTH_ENCRYPTION_KEY": "d9390b2c40115621a794999e812abc00",
             },
             tmpfs={"/tmp": ""},
         )

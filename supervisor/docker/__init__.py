@@ -149,7 +149,7 @@ class DockerAPI:
                 f"{image}:{tag}", use_config_proxy=False, **kwargs
             )
         except docker.errors.NotFound as err:
-            _LOGGER.error("Image %s not exists for %s", image, name)
+            _LOGGER.error("Image %s:%s not exists for %s", image, tag, name)
             raise DockerNotFound() from err
         except docker.errors.DockerException as err:
             _LOGGER.error("Can't create container from %s: %s", name, err)
