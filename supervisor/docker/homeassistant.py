@@ -147,9 +147,9 @@ class DockerHomeAssistant(DockerInterface):
                 ENV_TOKEN: self.sys_homeassistant.supervisor_token,
                 ENV_TOKEN_HASSIO: self.sys_homeassistant.supervisor_token,
                 # TODO(abrownglez): Set this variables in a config file during Docker build.
-                "BASE_EXT_URL": "https://test-cerebro.casai.com/",
-                "CASAI_AUTH_BASE_URL": "https://test-cerebro.casai.com",
-                "CASAI_AUTH_ENCRYPTION_KEY": "d9390b2c40115621a794999e812abc00",
+                "BASE_EXT_URL": "https://colmena.casai.com/",
+                "CASAI_AUTH_BASE_URL": "https://colmena.casai.com",
+                "CASAI_AUTH_ENCRYPTION_KEY": "ada4f92fc70bb39b5ca7744f1ad444ec",
             },
             tmpfs={"/tmp": ""},
         )

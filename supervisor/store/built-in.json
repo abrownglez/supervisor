@@ -8,5 +8,10 @@
         "name": "Official add-ons",
         "url": "https://home-assistant.io/addons",
         "maintainer": "Home Assistant"
+    },
+    "casai": {
+        "name": "Official Casai add-ons",
+        "url": "https://github.com/casai-org/cerebro-addons",
+        "maintainer": "Casai"
     }
 }

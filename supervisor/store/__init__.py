@@ -15,7 +15,11 @@ from .repository import Repository
 
 _LOGGER: logging.Logger = logging.getLogger(__name__)
 
-BUILTIN_REPOSITORIES = {StoreType.CORE.value, StoreType.LOCAL.value}
+BUILTIN_REPOSITORIES = {
+    StoreType.CORE.value,
+    StoreType.LOCAL.value,
+    StoreType.CASAI.value,
+}
 
 
 class StoreManager(CoreSysAttributes):

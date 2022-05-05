@@ -8,3 +8,4 @@ class StoreType(str, Enum):
     CORE = "core"
     LOCAL = "local"
     GIT = "git"
+    CASAI = "https://github.com/casai-org/cerebro-addons"
