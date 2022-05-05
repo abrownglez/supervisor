@@ -272,5 +272,6 @@ class Updater(FileConfiguration, CoreSysAttributes):
         self.save_data()
 
         # Send status update to core
+        # TODO: Instead of notifying core through a websocket, trigger the automatic update.
         for event in events:
             self.sys_homeassistant.websocket.supervisor_update_event(event)
